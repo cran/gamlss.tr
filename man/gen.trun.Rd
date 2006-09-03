@@ -22,7 +22,7 @@ gen.trun(par = c(0), family = "NO", name = "tr", type = c("left", "right", "both
 \details{
 }
 \value{
- Retuns  the \code{d}, the \code{p}, the \code{q} and the \code{r} functions of 
+ Returns  the \code{d}, the \code{p}, the \code{q} and the \code{r} functions of 
   a truncated  distribution 
 }
 \references{ Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 

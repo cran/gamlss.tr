@@ -25,7 +25,7 @@ trun(par = c(0), family = "NO", name = "tr", type = c("left", "right", "both"),
 This function is created to help the user to fit a truncated form of existing \code{gamlss} distribution.
 It does this by taking an existing \code{\link[gamlss]{gamlss.family}} and changing some of the components of the distribution to help the fitting process. 
 It particular it i) creates a pdf (\code{d}) and a cdf (\code{p}) function within \code{gamlss}, 
-ii) changes  the global deviance function \code{G.dev.incr}, the first derivative funtions (see note below) and the quantile residual function.   
+ii) changes  the global deviance function \code{G.dev.incr}, the first derivative functions (see note below) and the quantile residual function.   
 }
 \value{
 It returns a \code{\link[gamlss]{gamlss.family}} object which has all the components needed for fitting a distribution in \code{gamlss}. 
@@ -38,10 +38,12 @@ Accompanying documentation in the current GAMLSS  help files, (see also  \url{ht
 
 \author{Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk} and Bob Rigby \email{r.rigby@londonmet.ac.uk}}
 
-\note{This function is experimental and could be changed. The function \code{true}  changes the first derivatives of the 
-original gamlss family \code{d} function to numerical derivatives for the new truncated \code{d} function. The default increment \code{delta},
-for this numerical derivatives function, is \code{eps * pmax(abs(x), 1)} where \code{eps<-sqrt(.Machine$double.eps)}. 
-The default \code{delta} could be inappropriate for specific applications and can be overwritten by using the argument \code{delta}.}
+\note{This function is experimental and could be changed. The function \code{trun}  changes 
+      the first derivatives of the original gamlss family \code{d} function to numerical derivatives 
+      for the new truncated \code{d} function. The default increment \code{delta},
+      for this numerical derivatives function, is \code{eps * pmax(abs(x), 1)} where 
+      \code{eps<-sqrt(.Machine$double.eps)}.  The default \code{delta} could be inappropriate 
+      for specific applications and can be overwritten by using the argument \code{delta}.}
 \seealso{\code{\link{trun.d}}, \code{\link{trun.p}}, \code{\link{trun.q}}, \code{\link{trun.r}},  \code{\link{gen.trun}} }
 \examples{
 # generate a left truncated zero t family
