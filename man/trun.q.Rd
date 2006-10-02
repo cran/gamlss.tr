@@ -27,7 +27,7 @@ Returns a q family function
 \emph{Appl. Statist.}, \bold{54}, part 3, pp 507-554.
 
 Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
-Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.londonmet.ac.uk/gamlss/}).}
+Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.com/}).}
 \author{ Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk} and Bob Rigby \email{r.rigby@londonmet.ac.uk} }
 \note{ }
 \seealso{  \code{\link{trun.d}}, \code{\link{trun.q}}, \code{\link{trun.r}}, \code{\link{gen.trun}} }

@@ -21,7 +21,7 @@ gen.trun <-function(par = c(0),
    eval(dummy <- trun.p(par, family = fname, type = type, ...))
    eval(call("<-",as.name(pfun),dummy), envir=parent.frame(n = 1))
    # generate q
-   eval(dummy <- trun.p(par, family = fname, type = type, ...))
+   eval(dummy <- trun.q(par, family = fname, type = type, ...))
    eval(call("<-",as.name(qfun),dummy), envir=parent.frame(n = 1))
    # generate r
    eval(dummy <- trun.r(par, family = fname, type = type, ...))
