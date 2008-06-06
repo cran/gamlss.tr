@@ -1,7 +1,7 @@
 \name{gen.trun}
 \alias{gen.trun}
 
-\title{Generates a truncate distribution from a GAMLSS family}
+\title{Generates a Truncate Distribution from a gamlss.family}
 \description{
   The \code{gen.trun()} function allows the user to generate the \code{d}, the \code{p}, the \code{q}, the \code{r} and the 
   \code{gamlss} fitting functions of a truncated  distribution given that the input \code{family} is a current GAMLSS family distribution. 

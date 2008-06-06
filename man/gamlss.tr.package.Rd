@@ -2,7 +2,7 @@
 \alias{gamlss.tr-package}
 \alias{gamlss.tr}
 \docType{package}
-\title{The GAMLSS add on package for truncated distributions}
+\title{The GAMLSS Add On Package for Truncated Distributions}
 \description{
 The main purpose of this package is to allow the user of the GAMLSS models to fit truncated distributions.
 }

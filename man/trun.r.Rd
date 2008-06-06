@@ -1,7 +1,7 @@
 \name{trun.r}
 \alias{trun.r}
 
-\title{Generates random values from a truncated density function of a GAMLSS family distribution}
+\title{Generates Random Values from a Truncated Density Function of a gamlss.family Distribution}
 \description{
  Creates a function to generate randon values from a truncated probability density function created from a current GAMLSS family distribution
 }

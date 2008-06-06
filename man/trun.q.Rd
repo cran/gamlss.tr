@@ -1,7 +1,7 @@
 \name{trun.q}
 \alias{trun.q}
 
-\title{Truncated inverse cumulative density function of a GAMLSS family distribution}
+\title{Truncated Inverse Cumulative Density Function of a gamlss.family Distribution}
 \description{
   Creates a function to produce the inverse of a truncated cumulative density function generated from a current GAMLSS family distribution
 }

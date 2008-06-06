@@ -1,24 +1,24 @@
 #----------------------------------------------------------------------------------------
 trun <-function (par = c(0), 
               family = "NO", 
-                name = "tr", 
                 type = c("left", "right", "both"),
+                name = "tr", 
                local = TRUE,
                delta = NULL, 
                 ...)
 {
 #------------------------------------------
+     TEST <- "TEST" # dummy name 
      type <- match.arg(type)
      fam  <- as.gamlss.family(family)
     fname <- fam$family[[1]] 
-   family <- c("None", "None")
-     dfun <- paste(paste("d",fname,sep=""), name, sep="")
+   family <- c("None", "None")  
    dorfun <- paste("d",fname,sep="")
    porfun <- paste("p",fname,sep="")
+     dfun <- paste(paste("d",fname,sep=""), name, sep="")
      pfun <- paste(paste("p",fname,sep=""), name, sep="")
    #  qfun <- paste(paste("q",fname,sep=""), name, sep="")
-   #  rfun <- paste(paste("r",fname,sep=""), name, sep="")           
- # fname <- family # as.name(family)
+   #  rfun <- paste(paste("r",fname,sep=""), name, sep="")
 if (local)
  {
 #--trying to get gamlss sys.frame--  
@@ -33,7 +33,6 @@ gamlss.environment <- sys.frame(position)
 #   generate d within gamlss
     eval(dummy <- trun.d(par, family = fname, type = type, ...))
     eval(call("<-",as.name(dfun),dummy), envir=gamlss.environment)# parent.frame(n = 1)
-# eval(call("<-",as.name(dfun),dummy), envir=sys.frame(1)) # to put it in gamlss
 # generate p within gamlss
     eval(dummy <- trun.p(par, family = fname, type = type, ...))
     eval(call("<-",as.name(pfun),dummy), envir=gamlss.environment)# parent.frame(n = 1)
@@ -53,33 +52,50 @@ gamlss.environment <- sys.frame(position)
 # now change the first derivatives
   switch(nopar,  
           { 
-      fam$dldm <- function() as.vector(attr(numeric.deriv(TEST(y, mu, log=TRUE), "mu", delta=NULL), "gradient")) 
+          # 1 parameter
+          # dldm
+      fam$dldm <- function(y,mu) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, log=TRUE), "mu", delta=NULL), "gradient")) 
            sMU <- sub("TEST", dfun, body(fam$dldm))
 if (!is.na(delta[1])) sMU <- sub("NULL",  as.character(delta[1]), sMU) 
 body(fam$dldm) <- parse(text=sMU[length(sMU)])
+          # residuals
           sres <- gsub(porfun, pfun,  deparse(fam$rqres))
-          if  (fam$type=="Discrete") sres <- gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+          if  (fam$type == "Discrete")
+             {
+               sres <-  if (type=="left"|type=="both")  gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+                        else sres
+             }
           sres <- gsub("expression", "",  sres)
      fam$rqres <- parse(text=sres)  
           },
-          {   
-      fam$dldm <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, log=TRUE), "mu", delta=NULL), "gradient"))
-      fam$dldd <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, log=TRUE), "sigma", delta=NULL), "gradient"))
+          {
+          # 2 parameters   
+      # dldm and dldd    
+      fam$dldm <- function(y,mu,sigma) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, log=TRUE), "mu", delta=NULL), "gradient"))
+      fam$dldd <- function(y,mu,sigma) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, log=TRUE), "sigma", delta=NULL), "gradient"))
+          # mu
            sMU <- sub("TEST", dfun, body(fam$dldm))
 if (!is.na(delta[1])) sMU <- sub("NULL",  as.character(delta[1]), sMU) 
-body(fam$dldm) <- parse(text=sMU[length(sMU)])   
+body(fam$dldm) <- parse(text=sMU[length(sMU)])
+          # sigma   
         sSIGMA <- sub("TEST", dfun, body(fam$dldd))
 if (!is.na(delta[2])) sSIGMA <- sub("NULL",  as.character(delta[2]), sSIGMA)
 body(fam$dldd) <- parse(text=sSIGMA[length(sSIGMA)]) 
+          # residuals
           sres <- gsub(porfun, pfun,  deparse(fam$rqres))
-          if  (fam$type=="Discrete") sres <- gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+         if  (fam$type == "Discrete")
+             {
+               sres <-  if (type=="left"|type=="both")  gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+                        else sres
+             } 
           sres <- gsub("expression", "",  sres)
      fam$rqres <- parse(text=sres)    
            },
+          # dldm dldd dldv 
            {   
-      fam$dldm <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "mu", delta=NULL), "gradient"))
-      fam$dldd <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "sigma", delta=NULL), "gradient"))
-      fam$dldv <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "nu", delta=NULL), "gradient"))
+      fam$dldm <- function(y,mu,sigma,nu) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "mu", delta=NULL), "gradient"))
+      fam$dldd <- function(y,mu,sigma,nu) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "sigma", delta=NULL), "gradient"))
+      fam$dldv <- function(y,mu,sigma,nu) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, log=TRUE), "nu", delta=NULL), "gradient"))
            sMU <- sub("TEST", dfun, body(fam$dldm))
 if (!is.na(delta[1]))sMU <- sub("NULL",  as.character(delta[1]), sMU)          
 body(fam$dldm) <- parse(text=sMU[length(sMU)])  
@@ -90,15 +106,20 @@ body(fam$dldd) <- parse(text=sSIGMA[length(sSIGMA)])
 if (!is.na(delta[3])) sNU <- sub("NULL",  as.character(delta[3]), sNU)
 body(fam$dldv) <- parse(text=sNU[length(sNU)])
           sres <- gsub(porfun, pfun,  deparse(fam$rqres))
-          if  (fam$type=="Discrete") sres <- gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+          if  (fam$type == "Discrete")
+             {
+               sres <-  if (type=="left"|type=="both")  gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+                        else sres
+             }
           sres <- gsub("expression", "",  sres)
      fam$rqres <- parse(text=sres)    
            },
+           # dldm dldd dldv dldt
            {
-      fam$dldm <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "mu", delta=NULL), "gradient"))
-      fam$dldd <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "sigma", delta=NULL), "gradient"))
-      fam$dldv <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "nu", delta=NULL), "gradient"))
-      fam$dldt <- function() as.vector(attr(numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "tau", delta=NULL), "gradient"))
+      fam$dldm <- function(y,mu,sigma,nu,tau) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "mu", delta=NULL), "gradient"))
+      fam$dldd <- function(y,mu,sigma,nu,tau) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "sigma", delta=NULL), "gradient"))
+      fam$dldv <- function(y,mu,sigma,nu,tau) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "nu", delta=NULL), "gradient"))
+      fam$dldt <- function(y,mu,sigma,nu,tau) as.vector(attr(gamlss:::numeric.deriv(TEST(y, mu, sigma, nu, tau, log=TRUE), "tau", delta=NULL), "gradient"))
            sMU <- sub("TEST", dfun, body(fam$dldm))
 if (!is.na(delta[1])) sMU <- sub("NULL",  as.character(delta[1]), sMU)      
 body(fam$dldm) <- parse(text=sMU[length(sMU)])   
@@ -112,9 +133,13 @@ body(fam$dldv) <- parse(text=sNU[length(sNU)])
 if (!is.na(delta[4])) sTAU <- sub("NULL",  as.character(delta[4]), sTAU)
 body(fam$dldt) <- parse(text=sTAU[length(sTAU)]) 
           sres <- gsub(porfun, pfun,  deparse(fam$rqres))
-          if  (fam$type=="Discrete") sres <- gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
-          sres <- gsub("expression", "",  sres)
+         if  (fam$type == "Discrete")
+             {
+               sres <-  if (type=="left"|type=="both")  gsub("ymin = 0",  paste("ymin =",par[1]+1),  sres) 
+                        else sres
+             }
      fam$rqres <- parse(text=sres)    
            })
       fam 
 }
+ 

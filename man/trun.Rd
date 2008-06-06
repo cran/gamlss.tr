@@ -1,22 +1,22 @@
 \name{trun}
 \alias{trun}
 
-\title{Fits a truncate distribution from a GAMLSS family}
+\title{Fits a Truncate Distribution from a gamlss.family}
 \description{
 This function can be used to fit truncated distributions. It takes as an argument an existing GAMLSS family distribution and 
 a parameter vector,  of the type c(left.value, right.value), and  generates a \code{\link[gamlss]{gamlss.family}} object which then can be used to fit 
  a truncated distribution.    
 }
 \usage{
-trun(par = c(0), family = "NO", name = "tr", type = c("left", "right", "both"), 
+trun(par = c(0), family = "NO",  type = c("left", "right", "both"), name = "tr", 
         local = TRUE, delta=NULL, ...)
 }
 
 \arguments{
   \item{par}{a scalar for left and right truncation or a vector of the type c(left.value, right.value) for interval truncation}
   \item{family}{an existing \code{\link[gamlss]{gamlss.family}} distribution}
-  \item{name}{a character string to be added to name of the created object i.e. with \code{family=TF} and \code{name=trZero} the \code{\link[gamlss]{gamlss.family}} object will be called \code{TFtrZero}}
   \item{type}{what type of truncation is required, \code{left}, \code{right} or \code{both}. If \code{both} the \code{par} should be a vector of length two. (the default is left truncation)}
+  \item{name}{a character string to be added to name of the created object i.e. with \code{family=TF} and \code{name=trZero} the \code{\link[gamlss]{gamlss.family}} object will be called \code{TFtrZero}}
   \item{local}{if TRUE the function will try to find the environment of \code{gamlss} to generate the \code{d} and \code{p} functions required for the fitting, if FALSE the functions will be generated in the global environment}
   \item{delta}{the delta increment used in the numerical derivatives} 
   \item{\dots}{for extra arguments }

@@ -1,7 +1,7 @@
 \name{trun.d}
 \alias{trun.d}
 
-\title{Truncated probability density function of a GAMLSS family distribution}
+\title{Truncated Probability Density Function of a gamlss.family Distribution}
 \description{
   Creates a truncated probability density function version from a current GAMLSS family distribution
 }

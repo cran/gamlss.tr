@@ -1,7 +1,7 @@
 \name{trun.p}
 \alias{trun.p}
 
-\title{Truncated cumulative density function of a GAMLSS family distribution}
+\title{Truncated Cumulative Density Function of a gamlss.family Distribution}
 \description{
  Creates a truncated cumulative density function version from a current GAMLSS family distribution
 }
