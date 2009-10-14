@@ -4,7 +4,7 @@
 \title{Fits a Truncate Distribution from a gamlss.family}
 \description{
 This function can be used to fit truncated distributions. It takes as an argument an existing GAMLSS family distribution and 
-a parameter vector,  of the type c(left.value, right.value), and  generates a \code{\link[gamlss]{gamlss.family}} object which then can be used to fit 
+a parameter vector,  of the type c(left.value, right.value), and  generates a \code{gamlss.family} object which then can be used to fit 
  a truncated distribution.    
 }
 \usage{
@@ -14,21 +14,21 @@ trun(par = c(0), family = "NO",  type = c("left", "right", "both"), name = "tr",
 
 \arguments{
   \item{par}{a scalar for left and right truncation or a vector of the type c(left.value, right.value) for interval truncation}
-  \item{family}{an existing \code{\link[gamlss]{gamlss.family}} distribution}
+  \item{family}{an existing \code{gamlss.family} distribution}
   \item{type}{what type of truncation is required, \code{left}, \code{right} or \code{both}. If \code{both} the \code{par} should be a vector of length two. (the default is left truncation)}
-  \item{name}{a character string to be added to name of the created object i.e. with \code{family=TF} and \code{name=trZero} the \code{\link[gamlss]{gamlss.family}} object will be called \code{TFtrZero}}
+  \item{name}{a character string to be added to name of the created object i.e. with \code{family=TF} and \code{name=trZero} the \code{gamlss.family} object will be called \code{TFtrZero}}
   \item{local}{if TRUE the function will try to find the environment of \code{gamlss} to generate the \code{d} and \code{p} functions required for the fitting, if FALSE the functions will be generated in the global environment}
   \item{delta}{the delta increment used in the numerical derivatives} 
   \item{\dots}{for extra arguments }
 }
 \details{
 This function is created to help the user to fit a truncated form of existing \code{gamlss} distribution.
-It does this by taking an existing \code{\link[gamlss]{gamlss.family}} and changing some of the components of the distribution to help the fitting process. 
+It does this by taking an existing \code{gamlss.family} and changing some of the components of the distribution to help the fitting process. 
 It particular it i) creates a pdf (\code{d}) and a cdf (\code{p}) function within \code{gamlss}, 
 ii) changes  the global deviance function \code{G.dev.incr}, the first derivative functions (see note below) and the quantile residual function.   
 }
 \value{
-It returns a \code{\link[gamlss]{gamlss.family}} object which has all the components needed for fitting a distribution in \code{gamlss}. 
+It returns a \code{gamlss.family} object which has all the components needed for fitting a distribution in \code{gamlss}. 
 }
 \references{ Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
 \emph{Appl. Statist.}, \bold{54}, part 3, pp 507-554.

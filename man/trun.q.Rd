@@ -11,15 +11,13 @@ trun.q(par, family = "NO", type = c("left", "right", "both"), ...)
 
 \arguments{
   \item{par}{ a vector with one (for \code{left} or \code{right} truncation) or two elements for \code{both}  }
-  \item{family}{ a \code{\link[gamlss]{gamlss.family}} object, which is used to define the distribution and the link functions of the various parameters. 
-   The distribution families supported by \code{gamlss()} can be found in \code{\link[gamlss]{gamlss.family}}.
+  \item{family}{ a \code{gamlss.family} object, which is used to define the distribution and the link functions of the various parameters. 
+   The distribution families supported by \code{gamlss()} can be found in \code{gamlss.family}.
    Functions such as BI() (binomial) produce a family object. }
   \item{type}{ whether \code{left}, \code{right} or in \code{both} sides truncation is required, (left is the default)  }
   \item{\dots}{for extra arguments }
 }
-\details{
- 
-}
+
 \value{
 Returns a q family function 
 }
@@ -29,7 +27,7 @@ Returns a q family function
 Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
 Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.com/}).}
 \author{ Mikis Stasinopoulos \email{d.stasinopoulos@londonmet.ac.uk} and Bob Rigby \email{r.rigby@londonmet.ac.uk} }
-\note{ }
+
 \seealso{  \code{\link{trun.d}}, \code{\link{trun.q}}, \code{\link{trun.r}}, \code{\link{gen.trun}} }
 \examples{
 # continuous

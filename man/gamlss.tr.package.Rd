@@ -33,8 +33,6 @@ Accompanying documentation in the current GAMLSS  help files, (see also  \url{ht
 \keyword{ distribution }
 \keyword{ regression }
 
-\seealso{\code{\link[gamlss]{gamlss}},\code{\link[gamlss]{gamlss.family}}  
-}
 \examples{
 gen.trun(par=c(0,100),family="TF", name="0to100", type="both")
 op <- par(mfrow = c(2, 2)) 
