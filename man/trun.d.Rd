@@ -81,9 +81,9 @@ if(abs(test4(1)-dPO(1)/(1-pPO(0)))>0.00001) stop("error in left trucation")
 test4(1, log=TRUE)
 log(dPO(1)/(1-pPO(0)))
 if(abs(test4(1, log=TRUE)-log(dPO(1)/(1-pPO(0))))>0.00001) stop("error in left trucation")
- sum(test4(y=1:20, mu=2)) # 
- sum(test4(y=1:200, mu=80)) #
-plot(function(y) test4(y, mu=20), from=1, to=51, n=50+1, type="h") # pdf 
+ sum(test4(x=1:20, mu=2)) # 
+ sum(test4(x=1:200, mu=80)) #
+plot(function(x) test4(x, mu=20), from=1, to=51, n=50+1, type="h") # pdf 
 # right truncated at 10 means 10 is included
 test5<-trun.d(par=c(10), family="NBI", type="right")
 test5(2)
@@ -92,10 +92,10 @@ if(abs(test5(1)-dNBI(1)/(pNBI(10)))>0.00001) stop("error in right trucation")
 test5(1, log=TRUE)
 log(dNBI(1)/(pNBI(10)))
 if(abs(test5(1, log=TRUE)-log(dNBI(1)/(pNBI(10))))>0.00001) stop("error in right trucation")
-sum(test5(y=0:10, mu=2,   sigma=2)) # 
-sum(test5(y=0:10, mu=300, sigma=5)) # can have mu > parameter
-plot(function(y) test5(y, mu=20, sigma=3), from=0, to=10, n=10+1, type="h") # pdf
-plot(function(y) test5(y, mu=300, sigma=5), from=0, to=10, n=10+1, type="h") # pdf
+sum(test5(x=0:10, mu=2,   sigma=2)) # 
+sum(test5(x=0:10, mu=300, sigma=5)) # can have mu > parameter
+plot(function(x) test5(x, mu=20, sigma=3), from=0, to=10, n=10+1, type="h") # pdf
+plot(function(x) test5(x, mu=300, sigma=5), from=0, to=10, n=10+1, type="h") # pdf
 #----------------------------------------------------------------------------------------
 # both
 test6<-trun.d(par=c(0,10), family="NBI", type="both")
@@ -106,10 +106,10 @@ test6(1, log=TRUE)
 log(dNBI(1)/(pNBI(10)-pNBI(0)))
 if(abs(test6(1, log=TRUE)-log(dNBI(1)/(pNBI(10)-pNBI(0))))>0.00001) 
            stop("error in right trucation")
-sum(test6(y=1:10, mu=2,   sigma=2)) # 
- sum(test6(y=1:10, mu=100, sigma=5)) # can have mu > parameter
-plot(function(y) test6(y, mu=20, sigma=3), from=1, to=10, n=10, type="h") # pdf
-plot(function(y) test6(y, mu=300, sigma=.4), from=1, to=10, n=10, type="h") # pdf
+sum(test6(x=1:10, mu=2,   sigma=2)) # 
+ sum(test6(x=1:10, mu=100, sigma=5)) # can have mu > parameter
+plot(function(x) test6(x, mu=20, sigma=3), from=1, to=10, n=10, type="h") # pdf
+plot(function(x) test6(x, mu=300, sigma=.4), from=1, to=10, n=10, type="h") # pdf
 #----------------------------------------------------------------------------------------
 }
 \keyword{distribution}
