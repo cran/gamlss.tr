@@ -25,21 +25,27 @@ fun <- if (type=="left")
      else if (type=="right")
       function(x, log = FALSE, ...)
        {
-        if (any(x > par))  stop(paste("x must be less or equal to ", par, "\n", ""))
-        dfun <- pdf(x, log = TRUE,...)-log(cdf(par,...))
+        if (distype=="Discrete" &&  any(x >= par))  
+          stop(paste("x must be less than ", par, "\n", ""))
+        if (distype!="Discrete" && any(x > par))
+          stop(paste("x must be less or equal than ", par, "\n", ""))   
+        dfun <-  if (distype=="Discrete") pdf(x, log = TRUE,...)-log(cdf(par-1,...))
+                 else pdf(x, log = TRUE,...)-log(cdf(par,...))
         dfun <- if (log == TRUE) dfun else exp(dfun)
         dfun
        } 
      else if (type=="both")    
       function(x, log = FALSE, ...)
        {
-        if (distype=="Discrete" &&  (any(x <= par[1]) || any(x > par[2])) )  
-          stop(paste("x must be greater than", par[1], "and less than", par[2]+1, 
+        if (distype=="Discrete" &&  (any(x <= par[1]) || any(x >= par[2])) )  
+          stop(paste("x must be greater than", par[1], "and less than", par[2], 
                       "\n", ""))
         if (distype!="Discrete" && (any(x < par[1]) || any(x > par[2])) )
          stop(paste("x must be greater than", par[1], "and less or equal to", par[2], 
                       "\n", ""))  
-        dfun <- pdf(x, log = TRUE,...) - log(cdf(par[2],...)-cdf(par[1],...))
+        dfun <-   if (distype=="Discrete") pdf(x, log = TRUE,...) - log(cdf(par[2]-1,...)-cdf(par[1],...)) 
+                 else pdf(x, log = TRUE,...) - log(cdf(par[2],...)-cdf(par[1],...))      
+         #pdf(x, log = TRUE,...) - log(cdf(par[2],...)-cdf(par[1],...))
         dfun <- if (log == TRUE) dfun else exp(dfun)
         dfun
        }   

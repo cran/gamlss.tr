@@ -4,6 +4,12 @@
 \title{Generates Random Values from a Truncated Density Function of a gamlss.family Distribution}
 \description{
  Creates a function to generate randon values from a truncated probability density function created from a current GAMLSS family distribution
+
+For continuous distributions left truncation at  3 means that the random variable can take the value 3.
+For discrete distributions left truncation at 3 means that the random variable can take values from 4 onwards.
+This is the same for right truncation. Truncation at 15 for a discrete variable means that 
+15 and greater values are not allowed but for continuous variable it mean values greater that 15 are not allowed 
+(so 15 is a possible value). 
 }
 \usage{
 trun.r(par, family = "NO", type = c("left", "right", "both"), ...)

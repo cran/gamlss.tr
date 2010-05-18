@@ -14,10 +14,18 @@ Version: \tab 1.0\cr
 Date: \tab 2005-11-21\cr
 License: \tab GPL (version 2 or later) \cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+The user can take any \code{gamlss.family} and create a truncated version of it. Left, 
+right and both sides truncation is allowed. 
+For continuous distributions left truncation at  3 means that the random variable can take the value 3.
+For discrete distributions left truncation at 3 means that the random variable can take values from 4 onwards.
+This is the same for right truncation. Truncation at 15 for a discrete variable means that 
+15 and greater values are not allowed but for continuous variable it mean values greater that 15 are not allowed 
+(so 15 is a possible value).    
 }
+
 \author{
-Mikis Stasinopoulos <\email{d.stasinopoulos@londonmet.ac.uk}> and Bob Rigby <\email{r.rigby@londonmet.ac.uk}> 
+Mikis Stasinopoulos <\email{d.stasinopoulos@londonmet.ac.uk}> and 
+Bob Rigby <\email{r.rigby@londonmet.ac.uk}> 
 
 Maintainer: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>
 

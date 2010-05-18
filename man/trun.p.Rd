@@ -3,7 +3,13 @@
 
 \title{Truncated Cumulative Density Function of a gamlss.family Distribution}
 \description{
- Creates a truncated cumulative density function version from a current GAMLSS family distribution
+ Creates a truncated cumulative density function version from a current GAMLSS family distribution.
+ 
+ For continuous distributions left truncation at  3 means that the random variable can take the value 3.
+For discrete distributions left truncation at 3 means that the random variable can take values from 4 onwards.
+This is the same for right truncation. Truncation at 15 for a discrete variable means that 
+15 and greater values are not allowed but for continuous variable it mean values greater that 15 are not allowed 
+(so 15 is a possible value). 
 }
 \usage{
 trun.p(par, family = "NO", type = c("left", "right", "both"), ...)
@@ -82,23 +88,23 @@ plot(cdf, main="cdf", ylab="cdf(x)", do.points=FALSE )
 # right
 test2<-trun.p(par=c(10), family="NBI", type="right")
 test2(2)
-pNBI(2)/(pNBI(10))
-if(abs(test2(2)-(pNBI(2)/(pNBI(10))))>0.00001) stop("error in right trucation of p")
-plot(function(x) test2(x, mu=2), from=0, to=10, n=10, type="h")
-cdf <- stepfun(0:9, test2(0:10, mu=5), f = 0)
+pNBI(2)/(pNBI(9))
+if(abs(test2(2)-(pNBI(2)/(pNBI(9))))>0.00001) stop("error in right trucation of p")
+plot(function(x) test2(x, mu=2), from=0, to=9, n=10, type="h")
+cdf <- stepfun(0:8, test2(0:9, mu=5), f = 0)
 plot(cdf, main="cdf", ylab="cdf(x)", do.points=FALSE )
 #----------------------------------------------------------------------------------------
 # both 
 test6<-trun.p(par=c(0,10), family="NBI", type="both")
 test6(2)
-(pNBI(2)-pNBI(0))/(pNBI(10)-pNBI(0))
-if(abs(test6(2)-(pNBI(2)-pNBI(0))/(pNBI(10)-pNBI(0)))>0.00001) stop("error in the both trucation")
+(pNBI(2)-pNBI(0))/(pNBI(9)-pNBI(0))
+if(abs(test6(2)-(pNBI(2)-pNBI(0))/(pNBI(9)-pNBI(0)))>0.00001) stop("error in the both trucation")
 test6(1, log=TRUE)
-log((pNBI(1)-pNBI(0))/(pNBI(10)-pNBI(0)))
-if(abs(test6(1, log=TRUE)-log((pNBI(1)-pNBI(0))/(pNBI(10)-pNBI(0))))>0.00001) stop("error in both trucation")
-plot(function(y) test6(y, mu=20, sigma=3), from=1, to=10, n=10, type="h") # cdf
-plot(function(y) test6(y, mu=300, sigma=.4), from=1, to=10, n=10, type="h") # cdf
-cdf <- stepfun(1:9, test6(1:10, mu=5), f = 0)
+log((pNBI(1)-pNBI(0))/(pNBI(9)-pNBI(0)))
+if(abs(test6(1, log=TRUE)-log((pNBI(1)-pNBI(0))/(pNBI(9)-pNBI(0))))>0.00001) stop("error in both trucation")
+plot(function(y) test6(y, mu=20, sigma=3), from=1, to=9, n=9, type="h") # cdf
+plot(function(y) test6(y, mu=300, sigma=.4), from=1, to=9, n=9, type="h") # cdf
+cdf <- stepfun(1:8, test6(1:9, mu=5), f = 0)
 plot(cdf, main="cdf", ylab="cdf(x)", do.points=FALSE )
 #----------------------------------------------------------------------------------------  
 }
