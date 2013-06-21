@@ -16,7 +16,7 @@ License: \tab GPL (version 2 or later) \cr
 }
 The user can take any \code{gamlss.family} and create a truncated version of it. Left, 
 right and both sides truncation is allowed. 
-For continuous distributions left truncation at  3 means that the random variable can take the value 3.
+For continuous distributions left truncation at 3 means that the random variable can take the value 3.
 For discrete distributions left truncation at 3 means that the random variable can take values from 4 onwards.
 This is the same for right truncation. Truncation at 15 for a discrete variable means that 
 15 and greater values are not allowed but for continuous variable it mean values greater that 15 are not allowed 
@@ -35,18 +35,19 @@ Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for lo
 \emph{Appl. Statist.}, \bold{54}, part 3, pp 507-554.
 
 Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
-Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.com/}).
+Accompanying documentation in the current GAMLSS  help files, (see also  \url{http://www.gamlss.org/}).
 }
 \keyword{ package }
 \keyword{ distribution }
 \keyword{ regression }
 
 \examples{
+# generating a t-distribution from 0 to 100  	
 gen.trun(par=c(0,100),family="TF", name="0to100", type="both")
-op <- par(mfrow = c(2, 2)) 
-plot(function(x) dTF0to100(x, mu=80 ,sigma=20, nu=5), 0, 100)
-plot(function(x) pTF0to100(x, mu=80 ,sigma=20, nu=5), 0, 100)
-plot(function(x) qTF0to100(x, mu=80 ,sigma=20, nu=5), 0.01, .999)
-hist(rTF0to100(1000, mu=80 ,sigma=20, nu=5))
-op
+op<-par(mfrow=c(2,2))
+plot(function(x) dTF0to100(x, mu=80 ,sigma=20, nu=5), 0, 100, ylab="pdf")
+plot(function(x) pTF0to100(x, mu=80 ,sigma=20, nu=5), 0, 100, ylab="cdf")
+plot(function(x) qTF0to100(x, mu=80 ,sigma=20, nu=5), 0.01, .999, ylab="invcdf")
+hist(s1<-rTF0to100(1000, mu=80 ,sigma=20, nu=5), ylab="hist", xlab="x", main="generated data")
+par(op)
 }
