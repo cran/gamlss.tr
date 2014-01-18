@@ -1,7 +1,8 @@
 
 # functions
 
-export(gen.trun, trun.d, trun.p,trun.q,trun.r,gen.trun, trun)
+export(gen.trun, trun.d, trun.p,trun.q,trun.r, trun, fitTail, fitTailAll)
+importFrom(gamlss)
 
 
 
