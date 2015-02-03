@@ -72,11 +72,12 @@ plot(w403)
 qqnorm(resid(w403))
 abline(0,1, col="red")
 
+\dontrun{
 # hill -sequential plot 10% weibull
 w1<-fitTailAll(F90)
 # plot sigma
 plot(w1[,2])
-\dontrun{
+#-----------------
 #LOGNO
 l403<- fitTail(F90, family=LOGNO)
 plot(l403)

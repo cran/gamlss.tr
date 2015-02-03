@@ -2,7 +2,9 @@
 # functions
 
 export(gen.trun, trun.d, trun.p,trun.q,trun.r, trun, fitTail, fitTailAll)
-importFrom(gamlss)
+
+importFrom(gamlss, gamlss, gamlssML)
+importFrom(gamlss.dist, as.gamlss.family, dPO)
 
 
 
