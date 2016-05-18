@@ -61,8 +61,6 @@ gen.trun(par=cbind(leftPAR,rep(100, 100)),family="TF", name="0to100Varying",
 YY<- rTF0to100Varying(100, mu=80, sigma=20, nu=5)
 m1<-gamlss(YY~1, family=TF0to100Varying)
 m1
-# generating with different link
-gen.trun(0, NO(mu.link=log))
 }
 \keyword{distribution}
 \keyword{regression}
