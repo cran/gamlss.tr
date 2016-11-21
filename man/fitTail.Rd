@@ -64,7 +64,7 @@ Bob Rigby, Mikis Stasinopoulos and Vlassios Voudouris
 }
 \examples{
 data(film90)
-F90 <- film90$borev0
+F90 <- exp(film90$lborev1)# original scale
 # trucated plots
 # 10%
 w403<- fitTail(F90, family=WEI3)
