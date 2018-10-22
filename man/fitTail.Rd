@@ -68,7 +68,6 @@ F90 <- exp(film90$lborev1)# original scale
 # trucated plots
 # 10%
 w403<- fitTail(F90, family=WEI3)
-plot(w403)
 qqnorm(resid(w403))
 abline(0,1, col="red")
 
