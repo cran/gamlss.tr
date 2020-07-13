@@ -17,7 +17,7 @@ If the user want a different link (rather the default) for any of the parameters
 \usage{
 gen.trun(par = c(0), family = "NO", name = "tr", 
          type = c("left", "right", "both"), 
-         varying = FALSE,...)
+         varying = FALSE,  print=TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -28,6 +28,7 @@ gen.trun(par = c(0), family = "NO", name = "tr",
   \item{name}{the extra characters to be added to the name of new truncated distribution, by default it adds \code{tr}}
   \item{type}{whether \code{"left"}, \code{"right"} or in \code{"both"} sides truncation is required  }
  \item{varying}{whether the truncation  varies for different observations. This can be useful in regression analysis. If \code{varying = TRUE} then \code{par} should be an n-length vector for \code{type} equal \code{"left"} and \code{"right"} and an n by 2 matrix for \code{type="both"}}
+ \item{print}{whether to print the names of the created distribution}
   \item{\dots}{for extra arguments}
 }
 

@@ -11,9 +11,10 @@ There are two functions here. The function \code{fitTail()} which fits a truncat
 \usage{
 fitTail(y, family = "WEI3", percentage = 10, howmany = NULL, 
       type = c("right", "left"), ...)
+   
 fitTailAll(y, family = "WEI3", percentage = 10, howmany = NULL, 
       type = c("right", "left"), plot = TRUE, 
-      print = TRUE, save = FALSE, start = 5)
+      print = TRUE, save = FALSE, start = 5, trace = 0,  ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -27,6 +28,7 @@ fitTailAll(y, family = "WEI3", percentage = 10, howmany = NULL,
   \item{print}{whether to print the coefficients with default equal \code{TRUE}}
   \item{save}{whether to save the fitted linear model with default equal \code{FALSE}}
    \item{start}{where to start fitting from the tail of the data}
+   \item{trace}{0: no output 1: minimal 2: print estimates}
   \item{\dots}{
 for further argument to the fitting function
 }

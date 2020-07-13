@@ -1,8 +1,8 @@
 Package: gamlss.tr
 Type: Package
 Title: Generating and Fitting Truncated `gamlss.family' Distributions
-Version: 5.1-0
-Date: 2018-10-07
+Version: 5.1-7
+Date: 2020-07-13
 Author: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>, Bob
         Rigby <r.rigby@londonmet.ac.uk>
 Maintainer: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>
@@ -15,6 +15,6 @@ Description: This is an add on package to GAMLSS. The purpose of this
 License: GPL-2 | GPL-3
 URL: http://www.gamlss.org/
 NeedsCompilation: no
-Packaged: 2018-10-07 13:02:07 UTC; MikisStasinopoulos
+Packaged: 2020-07-13 11:07:11 UTC; dimitriosstasinopoulos
 Repository: CRAN
-Date/Publication: 2018-10-22 12:00:04 UTC
+Date/Publication: 2020-07-13 13:10:02 UTC

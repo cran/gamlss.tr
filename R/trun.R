@@ -1,16 +1,21 @@
-## last change to allow binimial distribution fitting 
+## last change to allow binomial distribution fitting 
 ## 28-6-18
-## NOTE the for one parameter binomial typr distribution the order of the agrument is
+## NOTE the for one parameter binomial type distribution the order 
+#  of the agrument is
 ## x, bd , mu
 ## while for all the rest is 
 ## x, mu, sigma,...,bd
 ## this meens that the order in line 92 has to different from the rest
-## If a new binimial type distribution id created it has to have the binimial order 
-## This function creates a truncated  gamlss.family object which can be used for
+## If a new binimial type distribution is created it has to have the binomial 
+## in order 
+##------------------------------------------------------------------
+## This function creates a truncated  gamlss.family object which can 
+##  be used for
 ## fitting a GAMLSS model
 ## to correct the residuals for four parameter distributions
-##  change 30-10-2015 MS
-# to make sure that the function creates a function in which the links can be modified
+## change 30-10-2015 MS
+# to make sure that the function creates a function in which the links 
+# can be modified
 #-------------------------------------------------------------------------------
 ## A problem arise when we need different link function 
 ## the solution at the moment is to as for the different link in the beginning
