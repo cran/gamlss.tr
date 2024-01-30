@@ -22,7 +22,6 @@ fun <- if (type=="left")
      p <- runif(n)
     pp <- cdf(par,...)
      r <- invcdf((pp+p*(1-pp)),...)
-    if (distype=="Discrete")  r <- ifelse(r==par, par+1L, r)
      r
     }
      else if (type=="right")
@@ -33,7 +32,6 @@ fun <- if (type=="left")
      p <- runif(n)
     pp <- cdf(par,...)
      r <- invcdf(p*pp,...)
-     if (distype=="Discrete" )  r <- ifelse(r==par, par-1L, r)
      r
     }
      else if (type=="both")    
@@ -45,8 +43,6 @@ fun <- if (type=="left")
    pp1 <- cdf(par[1],...)
    pp2 <- cdf(par[2],...)
      r <- invcdf(p*(pp2-pp1)+pp1,...)
-     if (distype=="Discrete" ) { r <- ifelse(r==par[1], par[1]+1L, r)
-                                r <- ifelse(r==par[2], par[2]-1L, r)}
      r
     }
   }
